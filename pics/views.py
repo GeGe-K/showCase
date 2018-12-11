@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
+from .models import Photo,Category
 
 
 # Create your views here.
@@ -8,12 +9,12 @@ def index(request):
     pics = Photo.get_all_photos()
     return render(request, 'index.html', {"pics":pics})
 
-def photo(request, photo_id)
+def photo(request, photo_id):
     try:
         photo = Photo.objects.get(id=photo_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"all-news/photo.html", {"photo":photo})
+    return render(request,"all-photos/photo.html", {"photo":photo})
 
 def search_photo(request):
     # Function to implement search
@@ -27,7 +28,8 @@ def search_photo(request):
         message = "You haven't searched for any category"
         return render (request,'all-pics/search.html',{"message":message})
 
-def filter_by_category
+def filter_by_category(request,category_id):
+    
     # Function to filter the db and search for the photo according the category
 
     photos = Photo.filter_by_category(id = category_id)
