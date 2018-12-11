@@ -9,7 +9,7 @@ class PhotoTestClass(TestCase):
         
         self.category = Category(name = 'Metal Box')
         self.category.save_category()
-        self.photo = Photo(photo='photo.jpeg', name = 'photo', description = 'testing photo', category = self.category)
+        self.photo = Photo(photo='photo.jpg', name = 'photo', description = 'testing photo', category = self.category)
 
     # Testing instance
     def test_instance(self):
