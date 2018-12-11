@@ -1,18 +1,52 @@
-<!-- <!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+<!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {% if title %}
-        <title>Moringa Tribune - {{title}}</title>
-        {% else %}
-        <title> Moringa Tribune </title>
+        <title> The showCase - {{title}}</title>
+        {%else%}
+        <title>The showCase</title>
         {% endif %}
 
+        {%block styles%}
+            {% bootstrap_css %}   
+            <link rel="stylesheet" type="text/css" media="screen" href="{%static 'css/basepics.css'%}" >
+        {% endblock %}
     </head>
-
     <body>
-        {% block content %} <h1>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+        {% include 'navbar.html' %}
+        {% block content %}
+        
+        {% endblock %}
+        {% block scripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% bootstrap_javascript %}
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+        <script>
+            var elem = document.querySelector('.grid');
+            var msnry = new Masonry(elem, {
+                // options
+                itemSelector: '.grid-item',
+                columnWidth: 200
+            });
+            // element argument can be a selector string
+            //   for an individual element
+            var msnry = new Masonry('.grid', {
+                // options
+            });
+        </script>
+        <script type="text/javascript">
+            function copyToClipboard(element) {
+                var myVar = document.getElementById(element);
+                myVar.select();
+                document.execCommand("copy");
+            }
+        </script>
+        {% endblock %}
     </body>
-
-</html> -->
+</html>
