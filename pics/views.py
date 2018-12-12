@@ -14,7 +14,7 @@ def photo(request, photo_id):
         photo = Photo.objects.get(id=photo_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"all-photos/photo.html", {"photo":photo})
+    return render(request,"search.html", {"photo":photo})
 
 def search_photo(request):
     # Function to implement search
@@ -23,14 +23,14 @@ def search_photo(request):
         searched_photos = Photo.search_photo(category)
         message = f'{category}'
 
-        return render(request, 'all-pics/search.html',{"message":message,"photos":searched_photos})
+        return render(request, 'search.html',{"message":message,"photos":searched_photos})
     else:
         message = "You haven't searched for any category"
-        return render (request,'all-pics/search.html',{"message":message})
+        return render (request,'search.html',{"message":message})
 
 def filter_by_category(request,category_id):
     
     # Function to filter the db and search for the photo according the category
 
     photos = Photo.filter_by_category(id = category_id)
-    return render(request,'all-pics/category.html',{"photos":photos})
+    return render(request,'category.html',{"photos":photos})
