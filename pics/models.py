@@ -15,7 +15,7 @@ class Category(models.Model):
         self.delete()
 
 class Photo(models.Model):
-    photo = models.ImageField(upload_to='photos/')
+    photo_path = models.ImageField(upload_to='photos/')
     name = models.CharField(max_length=40)
     description = models.TextField()
     category = models.ForeignKey(Category)
