@@ -6,8 +6,8 @@ from .models import Photo,Category
 # Create your views here.
 def index(request):
     # Function that renders the index page
-    pics = Photo.get_all_photos()
-    return render(request, 'index.html', {"pics":pics})
+    photos = Photo.get_all_photos()
+    return render(request, 'index.html', {"photos":photos})
 
 def photo(request, photo_id):
     try:
