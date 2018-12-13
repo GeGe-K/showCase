@@ -46,8 +46,9 @@ As a user, I would like to:
 
         $ pip install -r requirements.txt
 
-
-
+* Django Admin
+        Username: moringaschool
+        Password: centonomy5
 * Run the application in your terminal:
 
         $ python3.6 manage.py runserver

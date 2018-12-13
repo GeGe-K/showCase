@@ -41,7 +41,7 @@ class Photo(models.Model):
 
     @classmethod
     def filter_by_category(cls, id):
-        photos = cls.objects.filter(category_id=id)
+        photos = cls.objects.filter(category__id=id)
         return photos
 
     @classmethod
