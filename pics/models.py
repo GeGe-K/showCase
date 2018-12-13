@@ -31,7 +31,7 @@ class Photo(models.Model):
 
     @classmethod
     def get_all_photos(cls):
-        photos = cls.objects.order_by()
+        photos = cls.objects.all()
         return photos
 
     @classmethod
