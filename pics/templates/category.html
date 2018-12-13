@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center mb-4">
+            <h1>All photos for {{category.name}}</h1>
+        </div>
+        {% for photo in photos %}
+        <div class="col-md-4 mb-3">
+            <img src="{{photo.photo_path.url}}" alt="" class="img-fluid" data-toggle="modal" data-target="#{{photo.id}}">
+        </div>
+
+        <!-- Modal -->
+        <div id="{{photo.id}}" class="modal fade" role="dialog">
+            <div class="modal-dialog photo">
+
+                <!-- Modal content-->
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{photo.title}}</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{photo.photo_path.url}}" alt="" class="img-fluid">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{photo.id}}-info"><i
+                                class="fas fa-info-circle"></i> Info</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="border: 0.5px solid #d3d3d3;">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="{{photo.id}}-info" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{photo.title}} Caption</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{photo.description}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="form-control input-lg" type="text" value="https://GeGe-K-showCase.herokuapp.com{{photo.photo_path.url}}"
+                            id="{{photo.id}}-url">
+                        <button class="btn btn-primary" onclick="copyToClipboard('{{photo.id}}-url')">Copy</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
