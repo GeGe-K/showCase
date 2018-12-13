@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+    <div class="container">
+        <a href="/" class="navbar-brand" id="brand-name">ShowCase</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="bar">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a href="{% urll 'category' 1 %}" class="nav-link">The Pit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'category' 2 %}" class="nav-link">Metal Box</a>
+                </li>
+                <li class="nav=item">
+                    <a href="{% url 'category' 3 %}" class="nav-link">Woods</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'category' 4 %}" class="nav-link">Nature</a>
+                </li>
+            </ul>
+            <form action="{% url 'search' %}" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" id="message" placeholder="Search" name="category">
+                <button class="btn btn-secondary btn-sm-block my-2 my-sm-0 my-md-2" type="submit">Search</button>
+            </form>
+        </div> 
+    </div>
+
+</nav>
